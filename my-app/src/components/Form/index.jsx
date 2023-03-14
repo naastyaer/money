@@ -27,6 +27,7 @@ const Form = ({addPurchase}) =>{
                         <input 
                             onChange={(purchase) =>
                             setNumber(purchase.target.value.replace(/\D/, ""))}
+                            value={number}
                             name="number" 
                             type="text" 
                             className="col-span-2 border border-solid border-gray-400 rounded"

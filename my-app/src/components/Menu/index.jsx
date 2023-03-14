@@ -2,7 +2,7 @@ import React, {Component} from "react"; //это мне вообще зачем?
 
 const menuCategory = [
     {
-        key:"all",
+        key:"All",
         name:'Все траты'
     },
     {
@@ -25,6 +25,7 @@ return (
     {menuCategory.map((category) =>{
         return (
             <div key={category.key} onClick={ ()=>{choiceCategory(category.key)}} className="ml-5"> {category.name} </div> 
+            
             //передаем в choiceCategory ключ который нам нужен
         )
         })}

@@ -9,35 +9,44 @@ function App() {
     const [purchases, setPurchase] = useState([
         {
             id: 1, 
-            category: "Путешествия",
+            category: "travel",
             number: "1000"
         },
         {
             id: 2, 
-            category: "Еда",
+            category: "food",
             number: "9000"
         },
         {
             id: 3, 
-            category: "Одежда",
+            category: "clothes",
             number: "8000"
         }
         
     ])
+
+    let [currentPurchases, setCurrentPurchases] = useState([...purchases]) //масиив для категорий
     
     const addPurchase = (purchase) =>{
         setPurchase([...purchases, purchase])
     }
     
     const choiceCategory = (category) =>{
-        console.log(category)
-        //нужно показывать элементы, у которых такая же категория как переданная в этот метод
-        let filtred = purchases.filter( el => el.category === category) //не находит категории
-        console.log(filtred)
-        setPurchase([filtred]) //нужно еще ключи добавить
+        
+  
+            currentPurchases = purchases.filter( el => {
+                
+                if(category === 'All'){  
+                    currentPurchases=[...purchases]
+                    console.log(currentPurchases)
+                    setCurrentPurchases(currentPurchases) //почему не выводит не понимаю
+                    return
+                }
+                return el.category === category} 
+            ) 
+            setCurrentPurchases(currentPurchases)
     }
-    /*const currentItems = [...purchases]
-    console.log(currentItems)*/
+    
 
 
 
@@ -47,7 +56,7 @@ function App() {
                 <Menu choiceCategory={choiceCategory}/>
 
                 <div className="max-w-screen-1g mx-auto min-h-screen ">
-                    {purchases.length > 0 && purchases.map((purchase) =>{
+                    {currentPurchases.length > 0 && currentPurchases.map((purchase) =>{
                     return (
                         <Purchase key={purchase.id} purchase={purchase} />
                     )
