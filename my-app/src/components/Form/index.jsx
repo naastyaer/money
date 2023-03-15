@@ -1,8 +1,8 @@
 import Button from "components/Button";
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-
-const categorys = ['Еда', 'Одежда', 'Путешествия']
+const categorys = ['food', 'clothes', 'travel']
 
 const Form = ({addPurchase}) =>{
     const [number, setNumber] = useState (' ')
@@ -11,8 +11,9 @@ const Form = ({addPurchase}) =>{
     const handelClick = (e)=>{
         e.preventDefault()
         const purchase = {
-        number,
-        category
+        id: uuidv4(),
+        category,
+        number
         }
         addPurchase(purchase)
     }

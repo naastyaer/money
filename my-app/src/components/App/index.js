@@ -6,7 +6,7 @@ import Menu from 'components/Menu';
 /*import Categories from 'components/Categories';*/
 function App() {
     
-    const [purchases, setPurchase] = useState([
+    let [purchases, setPurchase] = useState([
         {
             id: 1, 
             category: "travel",
@@ -21,6 +21,16 @@ function App() {
             id: 3, 
             category: "clothes",
             number: "8000"
+        },
+        {
+            id: 4, 
+            category: "clothes",
+            number: "10000"
+        },
+        {
+            id: 5, 
+            category: "clothes",
+            number: "100"
         }
         
     ])
@@ -28,23 +38,28 @@ function App() {
     let [currentPurchases, setCurrentPurchases] = useState([...purchases]) //масиив для категорий
     
     const addPurchase = (purchase) =>{
-        setPurchase([...purchases, purchase])
+        purchases = [...purchases, purchase]
+        setPurchase(purchases)
+        setCurrentPurchases(purchases)
     }
-    
+    let sumWithInitial = 0 
     const choiceCategory = (category) =>{
-        
-  
             currentPurchases = purchases.filter( el => {
-                
-                if(category === 'All'){  
-                    currentPurchases=[...purchases]
-                    console.log(currentPurchases)
-                    setCurrentPurchases(currentPurchases) //почему не выводит не понимаю
+                console.log(category)
+                if(category === 'all'){  
+                    setCurrentPurchases(purchases) //почему не выводит не понимаю
                     return
                 }
                 return el.category === category} 
             ) 
             setCurrentPurchases(currentPurchases)
+            console.log(currentPurchases)
+            let number =[]
+            currentPurchases.map((purchase) =>{
+                number = [...number, Number(purchase.number)]
+                sumWithInitial = number.reduce((accumulator, currentValue) => accumulator + currentValue,)
+                console.log(sumWithInitial);
+            })
     }
     
 
@@ -53,12 +68,12 @@ function App() {
     return (
             <div className='w-1/2 bg-slate-200 mx-auto rounded-lg drop-shadow-md px-5'>
                 <Form addPurchase={addPurchase}/>
-                <Menu choiceCategory={choiceCategory}/>
+                <Menu choiceCategory={choiceCategory} sumWithInitial={sumWithInitial}/>
 
                 <div className="max-w-screen-1g mx-auto min-h-screen ">
                     {currentPurchases.length > 0 && currentPurchases.map((purchase) =>{
                     return (
-                        <Purchase key={purchase.id} purchase={purchase} />
+                        <Purchase key={purchase.id} purchase={purchase}/>
                     )
                     })}
                 </div>

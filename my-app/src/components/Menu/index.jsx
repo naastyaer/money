@@ -2,8 +2,9 @@ import React, {Component} from "react"; //это мне вообще зачем?
 
 const menuCategory = [
     {
-        key:"All",
+        key:"all",
         name:'Все траты'
+        
     },
     {
         key:"food",
@@ -19,17 +20,20 @@ const menuCategory = [
     }
 ]
 
-const Menu = ({choiceCategory }) =>{
+
+
+const Menu = ({choiceCategory, sumWithInitial }) =>{
 return (
     <div className="flex flex-row">
     {menuCategory.map((category) =>{
         return (
-            <div key={category.key} onClick={ ()=>{choiceCategory(category.key)}} className="ml-5"> {category.name} </div> 
+            <div key={category.key} onClick={ ()=>{choiceCategory(category.key)}} className="ml-5"> {category.name} 
+            <p>общая сумма: {sumWithInitial}</p>
+            </div> 
             
-            //передаем в choiceCategory ключ который нам нужен
+
         )
-        })}
-   
+    })}
     </div>)
 }
 export default Menu
