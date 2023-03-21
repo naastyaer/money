@@ -4,7 +4,7 @@ function Button ({title, handelClick, type}){
         <button  
             type = {type}
             onClick = { event => handelClick(event)} 
-            className="ax-10 bg-indigo-200 rounded-lg text-xl font-semibold text-indigo-900 px-4 py-2 mt-3"> 
+            className="inline-block rounded bg-slate-200 px-6 pt-2.5 pb-2 text-mg font-medium  text-black hover:bg-slate-500 hover:text-white  w-full  ease-in duration-500"> 
             {title} 
         </button>
     )
