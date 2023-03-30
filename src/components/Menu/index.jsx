@@ -49,7 +49,7 @@ const Menu = ({ choiceCategory, purchases }) => {
       if (category === "all") {
         return true;
       }
-      return el.category === category;
+    return el.category === category;
     });
     let s = 0;
     sum.map((purchase) => {
@@ -71,6 +71,7 @@ const Menu = ({ choiceCategory, purchases }) => {
           >
             {" "}
             {category.name}
+            {category.sum}
             <p> {sumCategory(category.key)} </p>
             <div className={category.color}>
               <img
