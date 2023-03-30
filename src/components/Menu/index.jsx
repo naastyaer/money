@@ -1,5 +1,3 @@
-import React, { Component } from "react"; //это мне вообще зачем?
-
 const menuCategory = [
   {
     key: "all",
@@ -56,8 +54,9 @@ const Menu = ({ choiceCategory, purchases }) => {
     let s = 0;
     sum.map((purchase) => {
       s = s + parseInt(purchase.number);
+      return s;
     });
-    return s;
+    
   };
 
   return (

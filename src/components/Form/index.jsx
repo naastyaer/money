@@ -53,7 +53,7 @@ const Form = ({addPurchase}) =>{
                         <select 
                                 onChange={(purchase) =>  setCategory(purchase.target.value)}
                                 value={category}
-                                className="mb-2  w-full  rounded-sm text-black bg-slate-100 p-1" > //как поменять цвет выделения?(голубой)
+                                className="mb-2  w-full  rounded-sm text-black bg-slate-100 p-1" >
                                 {categorys.map(category => (
                                 <option key={category}>{category}</option>
                                 ))}
