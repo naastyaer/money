@@ -54,9 +54,8 @@ const Menu = ({ choiceCategory, purchases }) => {
     let s = 0;
     sum.map((purchase) => {
       s = s + parseInt(purchase.number);
-      return s;
     });
-    
+    return s;
   };
 
   return (
